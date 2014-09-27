@@ -23,14 +23,14 @@
 
  ******************************************************************************
  *
- * Filename: DefaultFor.java
+ * Filename: Sample.java
  *
  * Author: Jose San Leandro Armendariz
  *
- * Description: The default "for" implementation.
+ * Description: Example to try to replace the for loop via AspectJ.
  *
- * Date: 2014/08/22
- * Time: 11:45
+ * Date: 2014/08/21
+ * Time: 16:22
  *
  */
 package org.acmsl.pocs.lambdafor;
@@ -48,28 +48,29 @@ import org.checkthread.annotations.ThreadSafe;
 /*
  * Importing JDK classes.
  */
-import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.function.Consumer;
 
 /**
- * The default "for" implementation.
+ * Example to try to replace the for loop via AspectJ.
  * @author <a href="mailto:queryj@acm-sl.org">Jose San Leandro</a>
  * @since 0.0
- * Created: 2014/08/22 11:45
+ * Created: 2014/08/21 16:22
  */
 @ThreadSafe
-public class DefaultFor<C extends Collection<I>, I>
-    implements For<C, I>
+public class Sample
 {
     /**
-     * Iterates over given collection.
-     * @param collection the collection.
-     * @param function the lambda expression.
+     * Sample code.
+     * @return the items printed in the standard output.
      */
-    @Override
-    public void iterate(@NotNull final C collection, @NotNull final Consumer<I> function)
+    public Collection<Integer> sampleCode()
     {
-        collection.forEach(function);
+        @NotNull final Collection<Integer> items = Arrays.asList(1, 2, 3, 4);
+
+        @NotNull final Collection<Integer> result =
+            new ControlFlow().forloop(items, (i) -> { System.out.println(i); return i; });
+
+        return result;
     }
 }

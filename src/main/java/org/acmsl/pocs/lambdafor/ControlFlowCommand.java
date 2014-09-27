@@ -23,53 +23,40 @@
 
  ******************************************************************************
  *
- * Filename: DefaultFor.java
+ * Filename: ControlFlowDriverCommand.java
  *
  * Author: Jose San Leandro Armendariz
  *
- * Description: The default "for" implementation.
+ * Description: Commands for driving control flow constructs.
  *
  * Date: 2014/08/22
- * Time: 11:45
+ * Time: 17:14
  *
  */
 package org.acmsl.pocs.lambdafor;
-
-/*
- * Importing JetBrains annotations.
- */
-import org.jetbrains.annotations.NotNull;
 
 /*
  * Importing checkthread.org annotations.
  */
 import org.checkthread.annotations.ThreadSafe;
 
-/*
- * Importing JDK classes.
- */
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.function.Consumer;
-
 /**
- * The default "for" implementation.
+ * Commands for driving control flow constructs.
  * @author <a href="mailto:queryj@acm-sl.org">Jose San Leandro</a>
- * @since 0.0
- * Created: 2014/08/22 11:45
+ * @since 3.0
+ * Created: 2014/08/22 17:14
  */
 @ThreadSafe
-public class DefaultFor<C extends Collection<I>, I>
-    implements For<C, I>
+public enum ControlFlowCommand
 {
+    NEXT,
+    PREVIOUS,
+    RELOAD;
+
+
     /**
-     * Iterates over given collection.
-     * @param collection the collection.
-     * @param function the lambda expression.
+     * The serial version uid.
      */
-    @Override
-    public void iterate(@NotNull final C collection, @NotNull final Consumer<I> function)
-    {
-        collection.forEach(function);
-    }
+    private static final long serialVersionUID = -7218639284442478544L;
+
 }

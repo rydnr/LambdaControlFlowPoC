@@ -23,53 +23,47 @@
 
  ******************************************************************************
  *
- * Filename: DefaultFor.java
+ * Filename: SampleTest.java
  *
  * Author: Jose San Leandro Armendariz
  *
- * Description: The default "for" implementation.
+ * Description: Tests whether the Sample class has been weaved by ForReplacer
+ *              aspect.
  *
- * Date: 2014/08/22
- * Time: 11:45
+ * Date: 2014/08/23
+ * Time: 08:46
  *
  */
 package org.acmsl.pocs.lambdafor;
 
 /*
- * Importing JetBrains annotations.
+ * Importing JUnit classes.
  */
 import org.jetbrains.annotations.NotNull;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-/*
- * Importing checkthread.org annotations.
- */
-import org.checkthread.annotations.ThreadSafe;
-
-/*
- * Importing JDK classes.
- */
-import java.io.Serializable;
 import java.util.Collection;
-import java.util.function.Consumer;
 
 /**
- * The default "for" implementation.
+ * Tests whether the Sample class has been weaved by ForReplacer aspect.
  * @author <a href="mailto:queryj@acm-sl.org">Jose San Leandro</a>
  * @since 0.0
- * Created: 2014/08/22 11:45
+ * Created: 2014/08/23 08:46
  */
-@ThreadSafe
-public class DefaultFor<C extends Collection<I>, I>
-    implements For<C, I>
+@RunWith(JUnit4.class)
+public class SampleTest
 {
     /**
-     * Iterates over given collection.
-     * @param collection the collection.
-     * @param function the lambda expression.
+     * Tests whether the ControlFlowDriver has been driving the loop.
      */
-    @Override
-    public void iterate(@NotNull final C collection, @NotNull final Consumer<I> function)
+    @Test
+    public void CLI_for_gets_woven_correctly()
     {
-        collection.forEach(function);
+        @NotNull final Collection<Integer> items = new Sample().sampleCode();
+
+        Assert.assertEquals(4, items.size());
     }
 }

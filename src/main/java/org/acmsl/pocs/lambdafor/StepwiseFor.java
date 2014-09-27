@@ -165,6 +165,11 @@ public class StepwiseFor<C extends Collection<I>, I>
     {
         NEXT,
         PREVIOUS,
-        RELOAD
+        RELOAD;
+
+        /**
+         * The serial version uid.
+         */
+        private static final long serialVersionUID = 9150548302305646182L;
     }
 }

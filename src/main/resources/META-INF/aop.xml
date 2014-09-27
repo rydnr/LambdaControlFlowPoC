@@ -1,0 +1,3 @@
+<aspectj>
+  <weaver options="-XnoInline -verbose -debug -showWeaveInfo"></weaver>
+</aspectj>
